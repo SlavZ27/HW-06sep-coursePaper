@@ -2,9 +2,9 @@ public class Employee {
 
     public static int count = 0;       //счетчик
     private final int ID;
-    private final String firstName;               //имя
-    private final String midName;                 //отчество
-    private final String lastName;                //фамилия
+    private String firstName;               //имя
+    private String midName;                 //отчество
+    private String lastName;                //фамилия
     private int department;                 //принимает значения от 1 до 5
     private float salary;                     //зарплата
 
