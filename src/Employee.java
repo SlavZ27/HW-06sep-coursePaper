@@ -5,7 +5,7 @@ public class Employee {
     String midName;                 //отчество
     String lastName;                //фамилия
     int department;                 //принимает значения от 1 до 5
-    int salary;                     //зарплата
+    float salary;                     //зарплата
 
     public Employee(String firstName, String midName, String lastName, int department, int salary) {
         id++;
@@ -31,7 +31,7 @@ public class Employee {
         this.department = department;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(float salary) {
         this.salary = salary;
     }
 
@@ -55,7 +55,7 @@ public class Employee {
         return department;
     }
 
-    public int getSalary() {
+    public float getSalary() {
         return salary;
     }
 }
