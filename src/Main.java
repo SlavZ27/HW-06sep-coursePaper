@@ -49,7 +49,7 @@ public class Main {
     public static void indexSalaryInDepartment(Employee[] employees, int department, int precent){
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null) {
-                if(employees[i].department == department) {
+                if(employees[i].getDepartment() == department) {
                     employees[i].setSalary(employees[i].getSalary()/100*(100+precent));
                 }
             } else {
@@ -272,10 +272,10 @@ public class Main {
             if (employees[i] != null) {
                 if (employees[i].getDepartment() == department) {
                     System.out.println("Employee{" +
-                            "firstName='" + employees[i].firstName + '\'' +
-                            ", midName='" + employees[i].midName + '\'' +
-                            ", lastName='" + employees[i].lastName + '\'' +
-                            ", salary=" + employees[i].salary +
+                            "firstName='" + employees[i].getFirstName() + '\'' +
+                            ", midName='" + employees[i].getMidName() + '\'' +
+                            ", lastName='" + employees[i].getLastName() + '\'' +
+                            ", salary=" + employees[i].getSalary() +
                             "}");
                 }
             } else {
@@ -292,10 +292,11 @@ public class Main {
             if (employees[i] != null) {
                 if (employees[i].getSalary() >= number) {
                     System.out.println("Employee{" +
-                            "firstName='" + employees[i].firstName + '\'' +
-                            ", midName='" + employees[i].midName + '\'' +
-                            ", lastName='" + employees[i].lastName + '\'' +
-                            ", salary=" + employees[i].salary +
+                            "ID='" + employees[i].getId() + '\'' +
+                            ", firstName='" + employees[i].getFirstName() + '\'' +
+                            ", midName='" + employees[i].getMidName() + '\'' +
+                            ", lastName='" + employees[i].getLastName() + '\'' +
+                            ", salary=" + employees[i].getSalary() +
                             "}");
                 }
             } else {
@@ -312,11 +313,11 @@ public class Main {
             if (employees[i] != null) {
                 if (employees[i].getSalary() < number) {
                     System.out.println("Employee{" +
-                            "ID='" + Employee.getId() + '\'' +
-                            ", firstName='" + employees[i].firstName + '\'' +
-                            ", midName='" + employees[i].midName + '\'' +
-                            ", lastName='" + employees[i].lastName + '\'' +
-                            ", salary=" + employees[i].salary +
+                            "ID='" + employees[i].getId() + '\'' +
+                            ", firstName='" + employees[i].getFirstName() + '\'' +
+                            ", midName='" + employees[i].getMidName() + '\'' +
+                            ", lastName='" + employees[i].getLastName() + '\'' +
+                            ", salary=" + employees[i].getSalary() +
                             "}");
                 }
             } else {

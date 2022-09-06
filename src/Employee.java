@@ -1,19 +1,21 @@
 public class Employee {
 
-    public static int id = 0;       //счетчик
-    String firstName;               //имя
-    String midName;                 //отчество
-    String lastName;                //фамилия
-    int department;                 //принимает значения от 1 до 5
-    float salary;                     //зарплата
+    public static int count = 0;       //счетчик
+    private final int ID;
+    private final String firstName;               //имя
+    private final String midName;                 //отчество
+    private final String lastName;                //фамилия
+    private int department;                 //принимает значения от 1 до 5
+    private float salary;                     //зарплата
 
     public Employee(String firstName, String midName, String lastName, int department, int salary) {
-        id++;
+        this.ID = count;
         this.firstName = firstName;
         this.midName = midName;
         this.lastName = lastName;
         this.department = department;
         this.salary = salary;
+        count++;
     }
 
     @Override
@@ -35,8 +37,8 @@ public class Employee {
         this.salary = salary;
     }
 
-    public static int getId() {
-        return id;
+    public int getId() {
+        return ID;
     }
 
     public String getFirstName() {
