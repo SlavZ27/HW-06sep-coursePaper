@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Employee {
 
     public static int count = 0;       //счетчик
@@ -6,9 +8,11 @@ public class Employee {
     private String midName;                 //отчество
     private String lastName;                //фамилия
     private int department;                 //принимает значения от 1 до 5
+
+    public final static int COUNT_DEPARTMENT = 5;
     private float salary;                     //зарплата
 
-    public Employee(String firstName, String midName, String lastName, int department, int salary) {
+    public Employee(String firstName, String midName, String lastName, int department, float salary) {
         this.ID = count;
         this.firstName = firstName;
         this.midName = midName;
@@ -16,6 +20,19 @@ public class Employee {
         this.department = department;
         this.salary = salary;
         count++;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return ID == employee.ID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID);
     }
 
     @Override
@@ -30,11 +47,19 @@ public class Employee {
     }
 
     public void setDepartment(int department) {
-        this.department = department;
+        if ((department > 0) && (department < COUNT_DEPARTMENT)) {
+            this.department = department;
+        } else {
+            throw new IllegalArgumentException("Отделы могут быть в диапазоне от 1 до 5");
+        }
     }
 
     public void setSalary(float salary) {
-        this.salary = salary;
+        if (salary > 0) {
+            this.salary = salary;
+        } else {
+            throw new IllegalArgumentException("Зарплата не может быть отрицательной");
+        }
     }
 
     public int getId() {
