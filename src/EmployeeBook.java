@@ -35,9 +35,9 @@ public class EmployeeBook {
                     ((employees[i].getFirstName().equals(firstName) &&
                             (employees[i].getMidName().equals(midName)) &&
                             (employees[i].getLastName().equals(lastName))))) {
-                    return i;
-                }
+                return i;
             }
+        }
         return -1;
     }
 
@@ -67,9 +67,8 @@ public class EmployeeBook {
             System.out.println("Сотрудник " + lastName + " не найден");
             return;
         }
-        String tempStr = employees[tempID].getLastName();
         employees[tempID] = null;
-        System.out.println("Сотрудник " + tempStr + " удалён");
+        System.out.println("Сотрудник " + lastName + " удалён");
     }
 
 
@@ -138,7 +137,9 @@ public class EmployeeBook {
 
         for (int i = indexEmployeeWithMaxSalary + 1; i < employees.length; i++) {
             if (employees[i] != null) {
-                if (employees[i].getDepartment() == department && employees[i].getSalary() >= employees[indexEmployeeWithMaxSalary].getSalary()) {
+                if (employees[i].getDepartment() ==
+                        department && employees[i].getSalary() >=
+                        employees[indexEmployeeWithMaxSalary].getSalary()) {
                     indexEmployeeWithMaxSalary = i;
                 }
             }
