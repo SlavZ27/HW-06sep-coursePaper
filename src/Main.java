@@ -14,75 +14,51 @@ public class Main {
         employeeBook.addEmployee("Sergei","Nikolaevich","Melden",1,10005);
 
         employeeBook.printAllEmployees();
-        System.out.println("+".repeat(100));
 
         employeeBook.delEmployee("Nikolai","Sidorovich","Harlamov");
 
         employeeBook.printAllEmployees();
-        System.out.println("+".repeat(100));
 
         employeeBook.changeDepartment("Oleg","Ivanovich","Krot",3);
 
         employeeBook.printAllEmployees();
-        System.out.println("+".repeat(100));
 
         employeeBook.changeSalary("Sergei","Nikolaevich","Melden", 20009);
 
         employeeBook.printAllEmployees();
-        System.out.println("+".repeat(100));
 
         employeeBook.printAllDepartment();
-        System.out.println("+".repeat(100));
 
         employeeBook.indexSalaryInDepartment(1, 10);
 
         employeeBook.printAllEmployees();
-        System.out.println("+".repeat(100));
 
         employeeBook.indexSalary(10);
 
         employeeBook.printAllEmployees();
-        System.out.println("+".repeat(100));
 
         employeeBook.printMaxSalaryEmployee();
 
-        System.out.println("+".repeat(100));
 
         employeeBook.printMaxSalaryEmployeeInDepartment(3);
 
-        System.out.println("+".repeat(100));
 
         employeeBook.printMinSalaryEmployeeInDepartment(3);
 
-        System.out.println("+".repeat(100));
 
         System.out.println("Средняя ЗП за месяц по всем: " + employeeBook.getMidSalaryPerMonth());
 
-        System.out.println("+".repeat(100));
-
         System.out.println("Сумма ЗП за месяц по всем: " + employeeBook.getSumSalaryPerMonth());
-
-        System.out.println("+".repeat(100));
 
         System.out.println("Средняя ЗП за месяц по отделу " + dep + ": " + employeeBook.getMidSalaryPerMonthInDepartment(dep));
 
-        System.out.println("+".repeat(100));
-
         System.out.println("Сумма ЗП за месяц по отделу " + dep + ": " + employeeBook.getSumSalaryPerMonthInDepartment(dep));
-
-        System.out.println("+".repeat(100));
 
         employeeBook.printAllFullName();
 
-        System.out.println("+".repeat(100));
-
         employeeBook.printAllEmployeesInDepartment(1);
 
-        System.out.println("+".repeat(100));
-
         employeeBook.printAllEmployeesSalaryMoreNumber(15000);
-
-        System.out.println("+".repeat(100));
 
         employeeBook.printAllEmployeesSalaryLessNumber(15000);
 

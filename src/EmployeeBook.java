@@ -12,33 +12,32 @@ public class EmployeeBook {
 
     public void addEmployee(String firstName, String midName, String lastName, int department, float salary) {
         int tempID = findEmployeeID(firstName, midName, lastName);
-        if (tempID == -1) {
-            for (int i = 0; i < employees.length; i++) {
-                if (employees[i] != null) {
-                    if (i + 1 == employees.length) {
-                        throw new RuntimeException("Книга переполненна");
-                    }
-                } else {
-                    employees[i] = new Employee(firstName, midName, lastName, department, salary);
-                    System.out.println("Сотрудник " + employees[i].getLastName() + " добавлен");
-                    break;
-                }
-            }
-        } else {
+        if (tempID != -1) {
             System.out.println("Сотрудник " + employees[tempID].getLastName() + " уже есть");
+            return;
+        }
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                if (i + 1 == employees.length) {
+                    throw new RuntimeException("Книга переполненна");
+                }
+            } else {
+                employees[i] = new Employee(firstName, midName, lastName, department, salary);
+                System.out.println("Сотрудник " + employees[i].getLastName() + " добавлен");
+                break;
+            }
         }
     }
 
     private int findEmployeeID(String firstName, String midName, String lastName) {
         for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null) {
-                if ((employees[i].getFirstName().equals(firstName))
-                        && (employees[i].getMidName().equals(midName))
-                        && (employees[i].getLastName().equals(lastName))) {
+            if ((employees[i] != null) &&
+                    ((employees[i].getFirstName().equals(firstName) &&
+                            (employees[i].getMidName().equals(midName)) &&
+                            (employees[i].getLastName().equals(lastName))))) {
                     return i;
                 }
             }
-        }
         return -1;
     }
 
@@ -64,32 +63,30 @@ public class EmployeeBook {
 
     public void delEmployee(String firstName, String midName, String lastName) {
         int tempID = findEmployeeID(firstName, midName, lastName);
-        if (tempID != -1) {
-            String tempStr = employees[tempID].getLastName();
-            employees[tempID] = null;
-            System.out.println("Сотрудник " + tempStr + " удалён");
-        } else {
+        if (tempID == -1) {
             System.out.println("Сотрудник " + lastName + " не найден");
+            return;
         }
+        String tempStr = employees[tempID].getLastName();
+        employees[tempID] = null;
+        System.out.println("Сотрудник " + tempStr + " удалён");
     }
 
 
-    public void indexSalaryInDepartment(int department, int precent) {
-        System.out.println("Индексирование ЗП отделу " + department + " на " + precent + "%");
+    public void indexSalaryInDepartment(int department, int percent) {
+        System.out.println("Индексирование ЗП отделу " + department + " на " + percent + "%");
         for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null) {
-                if (employees[i].getDepartment() == department) {
-                    employees[i].setSalary(employees[i].getSalary() / 100 * (100 + precent));
-                }
+            if ((employees[i] != null) && (employees[i].getDepartment() == department)) {
+                employees[i].setSalary(employees[i].getSalary() / 100 * (100 + percent));
             }
         }
     }
 
-    public void indexSalary(int precent) {
-        System.out.println("Индексирование ЗП всем" + " на " + precent + "%");
+    public void indexSalary(int percent) {
+        System.out.println("Индексирование ЗП всем" + " на " + percent + "%");
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null) {
-                employees[i].setSalary(employees[i].getSalary() / 100 * (100 + precent));
+                employees[i].setSalary(employees[i].getSalary() / 100 * (100 + percent));
             }
         }
     }
@@ -105,10 +102,8 @@ public class EmployeeBook {
     private Employee getMaxSalaryEmployee() {
         int indexEmployeeWithMaxSalary = 0;
         for (int i = 1; i < employees.length; i++) {
-            if (employees[i] != null) {
-                if (employees[i].getSalary() > employees[indexEmployeeWithMaxSalary].getSalary()) {
+            if ((employees[i] != null) && (employees[i].getSalary() > employees[indexEmployeeWithMaxSalary].getSalary())) {
                     indexEmployeeWithMaxSalary = i;
-                }
             }
         }
         return employees[indexEmployeeWithMaxSalary];
@@ -135,17 +130,20 @@ public class EmployeeBook {
         }
         if (indexEmployeeWithMaxSalary == -1) {
             System.out.println("В отделе нет сотрудников");
-        } else {
-            for (int i = indexEmployeeWithMaxSalary + 1; i < employees.length; i++) {
-                if (employees[i] != null) {
-                    if (employees[i].getDepartment() == department && employees[i].getSalary() >= employees[indexEmployeeWithMaxSalary].getSalary()) {
-                        indexEmployeeWithMaxSalary = i;
-                    }
-                }
-            }
+            return null;
+        }
+        if (indexEmployeeWithMaxSalary+1 == employees.length){ //проверка на то что первый в отделе == последний во всём списке
             return employees[indexEmployeeWithMaxSalary];
         }
-        return null;
+
+        for (int i = indexEmployeeWithMaxSalary + 1; i < employees.length; i++) {
+            if (employees[i] != null) {
+                if (employees[i].getDepartment() == department && employees[i].getSalary() >= employees[indexEmployeeWithMaxSalary].getSalary()) {
+                    indexEmployeeWithMaxSalary = i;
+                }
+            }
+        }
+        return employees[indexEmployeeWithMaxSalary];
     }
 
     public void printMinSalaryEmployeeInDepartment(int department){
@@ -169,17 +167,20 @@ public class EmployeeBook {
         }
         if (indexEmployeeWithMinSalary == -1) {
             System.out.println("В отделе нет сотрудников");
-        } else {
-            for (int i = indexEmployeeWithMinSalary + 1; i < employees.length; i++) {
-                if (employees[i] != null) {
-                    if (employees[i].getDepartment() == department && employees[i].getSalary() < employees[indexEmployeeWithMinSalary].getSalary()) {
-                        indexEmployeeWithMinSalary = i;
-                    }
-                }
-            }
+            return null;
+        }
+        if (indexEmployeeWithMinSalary+1 == employees.length){ //проверка на то что первый в отделе == последний во всём списке
             return employees[indexEmployeeWithMinSalary];
         }
-        return null;
+
+        for (int i = indexEmployeeWithMinSalary + 1; i < employees.length; i++) {
+            if (employees[i] != null) {
+                if (employees[i].getDepartment() == department && employees[i].getSalary() < employees[indexEmployeeWithMinSalary].getSalary()) {
+                    indexEmployeeWithMinSalary = i;
+                }
+            }
+        }
+        return employees[indexEmployeeWithMinSalary];
     }
 
     public float getMidSalaryPerMonth() {

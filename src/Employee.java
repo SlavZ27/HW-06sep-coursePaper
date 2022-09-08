@@ -3,7 +3,7 @@ import java.util.Objects;
 public class Employee {
 
     public static int count = 0;       //счетчик
-    private final int ID;
+    private final int id;
     private String firstName;               //имя
     private String midName;                 //отчество
     private String lastName;                //фамилия
@@ -13,7 +13,7 @@ public class Employee {
     private float salary;                     //зарплата
 
     public Employee(String firstName, String midName, String lastName, int department, float salary) {
-        this.ID = count;
+        this.id = count;
         this.firstName = firstName;
         this.midName = midName;
         this.lastName = lastName;
@@ -27,12 +27,12 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return ID == employee.ID;
+        return id == employee.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID);
+        return Objects.hash(id);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class Employee {
     }
 
     public int getId() {
-        return ID;
+        return id;
     }
 
     public String getFirstName() {
