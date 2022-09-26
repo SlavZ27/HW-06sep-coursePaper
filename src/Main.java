@@ -2,7 +2,7 @@ public class Main {
 
     public static void main(String[] args){
 
-        EmployeeBook employeeBook = new EmployeeBook(10);
+        EmployeeBook employeeBook = new EmployeeBook();
 
         int dep = 1;
 
@@ -17,34 +17,23 @@ public class Main {
 
         employeeBook.delEmployee("Nikolai","Sidorovich","Harlamov");
 
-        employeeBook.printAllEmployees();
-
         employeeBook.changeDepartment("Oleg","Ivanovich","Krot",3);
 
-        employeeBook.printAllEmployees();
-
         employeeBook.changeSalary("Sergei","Nikolaevich","Melden", 20009);
-
-        employeeBook.printAllEmployees();
 
         employeeBook.printAllDepartment();
 
         employeeBook.indexSalaryInDepartment(1, 10);
 
-        employeeBook.printAllEmployees();
-
         employeeBook.indexSalary(10);
-
-        employeeBook.printAllEmployees();
 
         employeeBook.printMaxSalaryEmployee();
 
-
         employeeBook.printMaxSalaryEmployeeInDepartment(3);
-
 
         employeeBook.printMinSalaryEmployeeInDepartment(3);
 
+        employeeBook.printAllEmployees();
 
         System.out.println("Средняя ЗП за месяц по всем: " + employeeBook.getMidSalaryPerMonth());
 
