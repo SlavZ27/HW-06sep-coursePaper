@@ -27,12 +27,12 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return id == employee.id;
+        return firstName.equals(employee.firstName) && midName.equals(employee.midName) && lastName.equals(employee.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(firstName, midName, lastName);
     }
 
     @Override
