@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Objects;
 
 public class Employee {
@@ -11,15 +13,37 @@ public class Employee {
 
     public final static int COUNT_DEPARTMENT = 5;
     private float salary;                     //зарплата
+    private final static String ABC = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
 
     public Employee(String firstName, String midName, String lastName, int department, float salary) {
+
         this.id = count;
-        this.firstName = firstName;
-        this.midName = midName;
-        this.lastName = lastName;
+        this.firstName = validateFMLName(firstName);
+        this.midName = validateFMLName(midName);
+        this.lastName = validateFMLName(lastName);
         this.department = department;
         this.salary = salary;
         count++;
+    }
+
+    public String validateFMLName(String s) {
+        if (StringUtils.isBlank(s)) {
+            throw new IllegalArgumentException();
+        }
+
+        s = StringUtils.lowerCase(s);
+        s = StringUtils.trim(s);
+
+        if (StringUtils.contains(s, " ")) {
+            throw new IllegalArgumentException();
+        }
+
+        if (!StringUtils.containsOnly(s, ABC)) {
+            throw new IllegalArgumentException();
+        }
+
+        return StringUtils.capitalize(s);
+
     }
 
     @Override

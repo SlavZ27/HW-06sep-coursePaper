@@ -6,9 +6,9 @@ public class Main {
 
         int dep = 1;
 
+        employeeBook.addEmployee("ivan","Petrovich","Petrov",1,20001);
         employeeBook.addEmployee("Ivan","Petrovich","Petrov",1,20001);
-        employeeBook.addEmployee("Ivan","Petrovich","Petrov",1,20001);
-        employeeBook.addEmployee("Oleg","Ivanovich","Krot",2,10002);
+        employeeBook.addEmployee("OLEG","Ivanovich","Krot",2,10002);
         employeeBook.addEmployee("Mariya","Olegovna","Kostrova",1,10003);
         employeeBook.addEmployee("Nikolai","Sidorovich","Harlamov",2,10004);
         employeeBook.addEmployee("Sergei","Nikolaevich","Melden",1,10005);
