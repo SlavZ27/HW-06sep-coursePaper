@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +11,7 @@ public class EmployeeBook {
     }
 
     private String getContainsKey(String firstName, String midName, String lastName) {
-        return firstName + midName + lastName;
+        return StringUtils.lowerCase(firstName + midName + lastName);
     }
 
     public void addEmployee(String firstName, String midName, String lastName, int department, float salary) {
@@ -18,7 +20,7 @@ public class EmployeeBook {
             System.out.println("Сотрудник " + tempEmployee.getLastName() + " уже есть");
             return;
         }
-        employees.put(firstName + midName + lastName, tempEmployee);
+        employees.put(StringUtils.lowerCase(firstName + midName + lastName), tempEmployee);
         System.out.println("Сотрудник " + tempEmployee.getLastName() + " добавлен");
     }
 
@@ -86,7 +88,7 @@ public class EmployeeBook {
             return null;
         }
 
-        Employee tempEmpl = new Employee("","","",0,0);
+        Employee tempEmpl = new Employee("s","s","s",0,0);
         for (Employee employee : employees.values()) {
             if (employee.getSalary() > tempEmpl.getSalary()) {
                 tempEmpl = employee;
